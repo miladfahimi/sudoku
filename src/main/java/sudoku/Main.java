@@ -8,6 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 
+		gameGenerator g = new gameGenerator();
+
 		boolean quit = false;
 		while (!quit) {
 			System.out.println("\nEnter action: (9 to show available actions)");
@@ -16,6 +18,7 @@ public class Main {
 			case "1":
 				System.out.println("\nStart the Game ");
 				System.out.println("------------------------");
+				System.out.println(g.getTable());
 				break;
 			case "2":
 				System.out.println("\nThe Answer");

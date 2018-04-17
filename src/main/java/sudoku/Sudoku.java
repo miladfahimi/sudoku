@@ -82,4 +82,8 @@ public class Sudoku {
 		}
 		return result.toString();
 	}
+
+	public String[][] getTable() {
+		return sudoku;
+	}
 }
