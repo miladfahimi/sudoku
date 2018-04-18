@@ -31,7 +31,7 @@ public class gameGenerator {
 		game = sudok.getTable();
 
 		int hideAnswer = 0;
-		while (hideAnswer < 13) {
+		while (hideAnswer < 12) {
 			int rand1 = new Random().nextInt(4);
 			int rand2 = new Random().nextInt(4);
 			game[rand1][rand2] = Sudoku.EMPTY;
@@ -40,10 +40,25 @@ public class gameGenerator {
 	}
 
 	public String getTable() {
-		return new Sudoku(game).getAnswer();
+		StringBuilder result = new StringBuilder();
+		for (int i = 0; i < 4; i++) {
+			if (i % 2 == 0 && i != 0) {
+				result.append("--------------\n");
+			}
+			for (int j = 0; j < 4; j++) {
+				if (j % 2 == 0 && j != 0) {
+					result.append(" | ");
+				}
+				result.append(" " + game[i][j] + " ");
+
+			}
+			result.append("\n");
+		}
+		return result.toString();
 	}
 
-	public String[][] getGame() {
-		return game;
+	public void updateValue(int row, int col, int value) {
+		String v = Integer.toString(value);
+		game[row][col] = v;
 	}
 }
