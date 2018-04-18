@@ -1,5 +1,6 @@
 package sudoku;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -9,6 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		gameGenerator g = new gameGenerator();
+		String[][] sol = new String[4][4];
 
 		boolean quit = false;
 		while (!quit) {
@@ -17,6 +19,10 @@ public class Main {
 			switch (action) {
 			case "1":
 				g = new gameGenerator();
+				String[][] game = g.getGame();
+				for (int i = 0; i < 4; i++) {
+					sol[i] = Arrays.copyOf(game[i], game[i].length);
+				}
 				System.out.println("\nStart the Game ");
 				System.out.println("------------------------");
 				System.out.println(g.getTable());
@@ -41,7 +47,7 @@ public class Main {
 							break;
 						}
 						g.updateValue(row - 1, col - 1, number);
-						System.out.println(g.getTable());
+						System.out.println("\n\n" + g.getTable());
 						break;
 					case "8":
 						System.out.println("exit\n\n");
@@ -55,7 +61,7 @@ public class Main {
 			case "2":
 				System.out.println("\nThe Answer");
 				System.out.println("------------------------\n");
-				Sudoku s = new Sudoku(g.getGame());
+				Sudoku s = new Sudoku(sol);
 				s.solve();
 				System.out.println(s.getAnswer());
 				break;
