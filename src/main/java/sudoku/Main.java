@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		gameGenerator g;
+		gameGenerator g = new gameGenerator();
 
 		boolean quit = false;
 		while (!quit) {
@@ -55,6 +55,9 @@ public class Main {
 			case "2":
 				System.out.println("\nThe Answer");
 				System.out.println("------------------------\n");
+				Sudoku s = new Sudoku(g.getGame());
+				s.solve();
+				System.out.println(s.getAnswer());
 				break;
 			case "8":
 				System.out.println("\nGood bye");

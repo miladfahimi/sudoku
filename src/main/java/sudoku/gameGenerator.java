@@ -61,4 +61,8 @@ public class gameGenerator {
 		String v = Integer.toString(value);
 		game[row][col] = v;
 	}
+
+	public String[][] getGame() {
+		return game;
+	}
 }
